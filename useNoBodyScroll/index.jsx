@@ -1,7 +1,8 @@
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 
 
 export function useBodyScrollLock(active) {
+
   const originalStyle = window.getComputedStyle(document.body).overflow
 
   useLayoutEffect(
@@ -13,7 +14,26 @@ export function useBodyScrollLock(active) {
       return () => {
         document.body.style.overflow = originalStyle
       }
-    }, 
-    [active] 
+    }, [active] 
   )
 }
+
+
+
+// export default function App() {
+
+//   const [ modalOpen, setModalOpen ] = useState(false)
+
+//   useBodyScrollLock(modalOpen)
+
+//   return (
+//     <>
+//       <button onClick={() => setModalOpen(true)}>Open Modal</button>
+//       {modalOpen && (
+//         <div className="modal">
+//           <button onClick={() => setModalOpen(false)}>Close Modal</button>
+//         </div>
+//       )}
+//     </>
+//   )
+// }
